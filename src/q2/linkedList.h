@@ -1,35 +1,45 @@
+//Marc assignment1 ProPar1
 #ifndef CT331_ASSIGNMENT_LINKED_LIST
 #define CT331_ASSIGNMENT_LINKED_LIST
 
-typedef struct listElementStruct listElement;
+//moved from linkedList.c
+typedef struct listElementStruct {
+	char *data;
+	size_t size;
+	struct listElementStruct *next;
+} listElement;
 
-//Creates a new linked list element with given content of size
-//Returns a pointer to the element
+//Returns elemenets in LinkedList
+int length(listElement *list);
+
+//Pushes to head of the list
+//Updates list
+void push(listElement **list, char *data, size_t size);
+
+//Pops element from head
+//Updates list
+listElement *pop(listElement **list);
+
+//Enqueues to head of the list
+//Updates list
+void enqueue(listElement **list, char *data, size_t   size);
+
+//Dequeues element
+listElement *dequeue(listElement *list);
+
+//Creates new linked list
+//Returns pointer
 listElement* createEl(char* data, size_t size);
 
-//Prints out each element in the list
+//Prints out each element in list
 void traverse(listElement* start);
 
-//Inserts a new element after the given el
-//Returns the pointer to the new element
+//Inserts new element
+//Returns pointer
 listElement* insertAfter(listElement* after, char* data, size_t size);
 
 //Delete the element after the given el
 void deleteAfter(listElement* after);
 
-// Returns the number of elements in a linked list.
-int length(listElement* list);
-
-//Push a new element onto the head of a list.
-void push(listElement** list, char* data, size_t size);
-
-//Pop an element from the head of a list.
-listElement* pop(listElement** list);
-
-//Enqueue a new element onto the head of the list.
-void enqueue(listElement** list, char* data, size_t size);
-
-//Dequeue an element from the tail of the list.
-listElement* dequeue(listElement* list);
 
 #endif
